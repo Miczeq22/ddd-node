@@ -1,0 +1,8 @@
+node_modules
+.env
+.cache
+docker/data
+dist
+.DS_Store
+coverage
+docker-compose.override.yml
