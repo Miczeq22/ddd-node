@@ -17,7 +17,7 @@
     "baseUrl": ".",
     "paths": {
       "@app/*": ["./src/app/*"],
-      "@errors/*": ["./src/errors/*"],
+      "@errors/*": ["src/shared/errors/*"],
       "@infrastructure/*": ["./src/infrastructure/*"],
       "@api/*": ["./src/api/*"],
       "@core/*": ["./src/core/*"],
