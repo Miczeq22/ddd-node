@@ -1,7 +1,7 @@
-import { AppError } from '@root/shared/errors/app.error';
+import { AppError } from '@root/errors/app.error';
 import { AsyncFunction } from './async-function';
 import { BusinessRule } from './business-rule';
-import { BusinessRuleValidationError } from './errors/business-rule-validation.error';
+import { BusinessRuleValidationError } from '../errors/business-rule-validation.error';
 import { UniqueEntityID } from './unique-entity-id';
 
 export abstract class Entity<EntityProps> {
