@@ -1,5 +1,5 @@
-import { AppError } from '@errors/app.error';
-import { BusinessRuleValidationError } from '@errors/business-rule-validation.error';
+import { AppError } from '@root/errors/app.error';
+import { BusinessRuleValidationError } from '@root/errors/business-rule-validation.error';
 import { AsyncFunction } from './async-function';
 import { BusinessRule } from './business-rule';
 
