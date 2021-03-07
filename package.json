@@ -36,6 +36,8 @@
     "@types/helmet": "^4.0.0",
     "@types/hpp": "^0.2.1",
     "@types/jest": "^26.0.20",
+    "@types/swagger-jsdoc": "^3.0.2",
+    "@types/swagger-ui-express": "^4.1.2",
     "@types/uuid": "^8.3.0",
     "@types/winston": "^2.4.4",
     "@typescript-eslint/eslint-plugin": "^4.15.1",
@@ -69,6 +71,8 @@
     "knex": "^0.95.1",
     "module-alias": "^2.2.2",
     "pg": "^8.5.1",
+    "swagger-jsdoc": "^5.0.1",
+    "swagger-ui-express": "^4.1.6",
     "uuid": "^8.3.2",
     "winston": "^3.3.3"
   }

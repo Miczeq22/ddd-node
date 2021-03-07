@@ -4,6 +4,8 @@ import { Logger } from '@tools/logger';
 import express, { Application } from 'express';
 import { errorHandlerMiddleware } from './rest/middlewares/error-handler/error-handler.middleware';
 import { applySecurityMiddleware } from './rest/middlewares/security/security.middleware';
+import * as swaggerUi from 'swagger-ui-express';
+import { swaggerDocs } from '@tools/swagger';
 
 interface Dependencies {
   controllers: Controller[];
@@ -29,6 +31,8 @@ export class Server {
         message: 'Hello, World!',
       });
     });
+
+    this.app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
     this.dependencies.controllers.forEach((controller) =>
       this.app.use(controller.route, controller.getRouter()),
