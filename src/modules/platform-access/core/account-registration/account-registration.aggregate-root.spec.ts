@@ -2,6 +2,7 @@ import { createMockProxy } from '@tools/mock-proxy';
 import { AccountEmailCheckerService } from '../account-email/account-email-checker.service';
 import { AccountStatus } from '../account-status/account-status.value-object';
 import { AccountRegistration } from './account-registration.aggregate-root';
+import { NewAccountRegisteredEvent } from './events/new-account-registered.domain-event';
 
 describe('[DOMAIN] Platform Access/Account Registration', () => {
   const accountEmailChecker = createMockProxy<AccountEmailCheckerService>();
@@ -68,5 +69,6 @@ describe('[DOMAIN] Platform Access/Account Registration', () => {
     );
 
     expect(account.getStatus().equals(AccountStatus.WaitingForConfirmation)).toBeTruthy();
+    expect(account.getDomainEvents()[0] instanceof NewAccountRegisteredEvent).toBeTruthy();
   });
 });

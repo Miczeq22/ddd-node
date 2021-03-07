@@ -1,4 +1,3 @@
-export interface DatabaseTransaction {
-  commit(): Promise<void>;
-  rollback(): Promise<void>;
-}
+import * as Knex from 'knex';
+
+export interface DatabaseTransaction extends Knex.Knex.Transaction {}
