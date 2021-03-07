@@ -19,6 +19,39 @@ export const registerNewAccountActionValidation = celebrate(
   },
 );
 
+/**
+ * @swagger
+ *
+ * /register:
+ *   post:
+ *     tags:
+ *       - Platform Access
+ *     security:
+ *       - bearerAuth: []
+ *     summary: Create new Account
+ *     requestBody:
+ *       content:
+ *         application/json:
+ *          schema:
+ *            type: object
+ *            properties:
+ *              email:
+ *                type: string
+ *                format: email
+ *              password:
+ *                type: string
+ *                format: password
+ *                writeOnly: true
+ *     responses:
+ *       201:
+ *        description: Account created successfuly
+ *       422:
+ *        description: Validation Error
+ *       400:
+ *        description: Bussiness rule validation error occured
+ *       500:
+ *         description: Internal Server Error
+ */
 const registerNewAccountAction = ({ commandBus }: Dependencies): RequestHandler => (
   req,
   res,
