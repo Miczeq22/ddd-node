@@ -1,0 +1,47 @@
+name: Test
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: test check
+        run: |
+          npm install
+          npm run test:ci
+        env:
+          POSTGRES_PORT: 5432
+          POSTGRES_USER: root
+          POSTGRES_PASSWORD: root
+          POSTGRES_DB: data
+          POSTGRES_HOST: localhost
+          ADMINER_PORT: 8080
+          POSTGRES_MIGRATION_PATH: ./src/infrastructure/database/sql
+          REDIS_PORT: 6379
+          MAILHOG_CLIENT_PORT: 8025
+          SMTP_PORT: 1025
+          MAILHOG_HOST: localhost
+          SERVICE_MAIL: team@connectd.com
+          VERIFICATION_TOKEN_SECRET: secret
+          ADMIN_EMAIL: admin@connectd.com
+          JWT_PRIVATE_KEY: secret
+          EMAIL_VERIFICATION_TOKEN_SECRET: secret
+          PASSWORD_RESET_TOKEN: secret
+          STORAGE_ACCESS: access
+          STORAGE_SECRET: secret
+          STORAGE_ENDPOINT: http://localhost:9000
+          STORAGE_BUCKET: bucket
+          ELASTICSEARCH_ENDPOINT: http://localhost:9200
+          ENV_NAMESPACE: dev
