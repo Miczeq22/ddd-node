@@ -1,4 +1,5 @@
 /* eslint-disable no-await-in-loop */
+import { DatabaseTransaction } from '@infrastructure/database/database-transaction';
 import { AggregateRoot } from './aggregate-root';
 import { DomainEvent } from './domain-event';
 
@@ -15,14 +16,17 @@ export class DomainEvents {
     }
   }
 
-  public static async dispatchDomainEventsForAggregate(aggregate: AggregateRoot<unknown>) {
+  public static async dispatchDomainEventsForAggregate(
+    aggregate: AggregateRoot<unknown>,
+    trx: DatabaseTransaction,
+  ) {
     const key = this.getAggregateKey(aggregate);
 
     if (this.markedAggregatesMap.has(key)) {
       const promises = this.markedAggregatesMap
         .get(key)
         .getDomainEvents()
-        .map((event) => this.dispatch(event));
+        .map((event) => this.dispatch(event, trx));
       aggregate.clearDomainEvents();
 
       await Promise.all(promises);
@@ -47,12 +51,12 @@ export class DomainEvents {
     this.markedAggregatesMap.clear();
   }
 
-  private static async dispatch(event: DomainEvent) {
+  private static async dispatch(event: DomainEvent, trx: DatabaseTransaction) {
     if (this.handlersMap.has(event.name)) {
       const handlers = this.handlersMap.get(event.name);
 
       for (const handler of handlers) {
-        await handler(event);
+        await handler(event, trx);
       }
     }
   }

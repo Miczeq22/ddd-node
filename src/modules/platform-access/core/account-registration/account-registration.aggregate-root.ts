@@ -4,6 +4,7 @@ import { AccountEmailCheckerService } from '../account-email/account-email-check
 import { AccountEmail } from '../account-email/account-email.value-object';
 import { AccountPassword } from '../account-password/account-password.value-object';
 import { AccountStatus } from '../account-status/account-status.value-object';
+import { NewAccountRegisteredEvent } from './events/new-account-registered.domain-event';
 
 interface AccountRegistrationProps {
   email: AccountEmail;
@@ -23,13 +24,21 @@ export class AccountRegistration extends AggregateRoot<AccountRegistrationProps>
     password: string,
     accountEmailChecker: AccountEmailCheckerService,
   ) {
-    return new AccountRegistration({
+    const account = new AccountRegistration({
       email: await AccountEmail.createNew(email, accountEmailChecker),
       password: await AccountPassword.createNew(password),
       confirmationDate: null,
       registrationDate: new Date(),
       status: AccountStatus.WaitingForConfirmation,
     });
+
+    account.addDomainEvent(new NewAccountRegisteredEvent(account.getEmail()));
+
+    return account;
+  }
+
+  public static fromPersistence(props: AccountRegistrationProps, id: UniqueEntityID) {
+    return new AccountRegistration(props, id);
   }
 
   public getEmail() {
