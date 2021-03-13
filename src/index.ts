@@ -10,12 +10,17 @@ import { createAppContainer } from './container/app-container';
 import { Application } from 'express';
 import { createServer } from 'http';
 import { Logger } from '@tools/logger';
+import { DomainSubscriber } from './shared/domain-subscriber';
 
 (async () => {
   const container = await createAppContainer();
 
   const app = container.resolve<Application>('app');
   const logger = container.resolve<Logger>('logger');
+
+  const subscribers = container.resolve<DomainSubscriber<any>[]>('subscribers');
+
+  subscribers.forEach((subscriber) => subscriber.setupSubscriptions());
 
   const server = createServer(app);
 
