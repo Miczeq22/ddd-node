@@ -32,7 +32,7 @@ export class AccountRegistration extends AggregateRoot<AccountRegistrationProps>
       status: AccountStatus.WaitingForConfirmation,
     });
 
-    account.addDomainEvent(new NewAccountRegisteredEvent(account.getEmail()));
+    account.addDomainEvent(new NewAccountRegisteredEvent(account.getEmail(), account.getId()));
 
     return account;
   }
