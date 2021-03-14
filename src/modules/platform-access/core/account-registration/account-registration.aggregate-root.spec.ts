@@ -71,4 +71,32 @@ describe('[DOMAIN] Platform Access/Account Registration', () => {
     expect(account.getStatus().equals(AccountStatus.WaitingForConfirmation)).toBeTruthy();
     expect(account.getDomainEvents()[0] instanceof NewAccountRegisteredEvent).toBeTruthy();
   });
+
+  test('should throw an error if account is already confirmed', async () => {
+    accountEmailChecker.isUnique.mockResolvedValue(true);
+
+    const account = await AccountRegistration.registerNew(
+      'john@doe.com',
+      'test123',
+      accountEmailChecker,
+    );
+
+    account.confirmAccount();
+
+    expect(() => account.confirmAccount()).toThrowError('Account is already confirmed.');
+  });
+
+  test('should confirm account', async () => {
+    accountEmailChecker.isUnique.mockResolvedValue(true);
+
+    const account = await AccountRegistration.registerNew(
+      'john@doe.com',
+      'test123',
+      accountEmailChecker,
+    );
+
+    account.confirmAccount();
+
+    expect(account.getStatus().equals(AccountStatus.Confirmed)).toBeTruthy();
+  });
 });

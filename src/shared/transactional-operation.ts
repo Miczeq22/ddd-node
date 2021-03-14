@@ -6,7 +6,7 @@ import { DomainEvents } from './domain-events';
 export const performTransactionalOperation = async (
   operation: (aggregate: AggregateRoot<unknown>) => Promise<DatabaseTransaction> | null,
   aggregate: AggregateRoot<unknown>,
-  queryBuilder: QueryBuilder,
+  queryBuilder?: QueryBuilder,
 ) => {
   let trx: DatabaseTransaction;
 
