@@ -3,6 +3,7 @@ import { AppError } from '@errors/app.error';
 import { BusinessRuleValidationError } from '@errors/business-rule-validation.error';
 import { InputValidationError } from '@errors/input-validation.error';
 import { NotFoundError } from '@errors/not-found.error';
+import { UnauthorizedError } from '@errors/unauthorized.error';
 import { Logger } from '@tools/logger';
 import { isCelebrateError, CelebrateError } from 'celebrate';
 import { ErrorRequestHandler } from 'express';
@@ -32,6 +33,12 @@ export const errorHandlerMiddleware = (logger: Logger): ErrorRequestHandler => (
   switch (error.name) {
     case BusinessRuleValidationError.name:
       return res.status(400).json({
+        error: error.message,
+        name: error.name,
+      });
+
+    case UnauthorizedError.name:
+      return res.status(401).json({
         error: error.message,
         name: error.name,
       });

@@ -1,9 +1,11 @@
 import { Controller } from '@root/shared/api/controller';
 import { Router, RequestHandler } from 'express';
+import { loginToPLatformActionValidation } from './login-to-platform/login-to-platform.action';
 import { registerNewAccountActionValidation } from './register-new-account/register-new-account.action';
 
 interface Dependencies {
   registerNewAccountAction: RequestHandler;
+  loginToPlatformAction: RequestHandler;
 }
 
 export class PlatfromAccessController extends Controller {
@@ -17,6 +19,11 @@ export class PlatfromAccessController extends Controller {
     router.post('/register', [
       registerNewAccountActionValidation,
       this.dependencies.registerNewAccountAction,
+    ]);
+
+    router.post('/login', [
+      loginToPLatformActionValidation,
+      this.dependencies.loginToPlatformAction,
     ]);
 
     return router;

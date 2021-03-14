@@ -1,13 +1,13 @@
 import { CommandBus } from '@root/shared/processing/command-bus';
 import { celebrate, Joi, Segments } from 'celebrate';
 import { RequestHandler } from 'express';
-import { RegisterNewAccountCommand } from '../../app/register-new-account/register-new-account.command';
+import { LoginToPlatformCommand } from '../../app/login-to-platform/login-to-platform.command';
 
 interface Dependencies {
   commandBus: CommandBus;
 }
 
-export const registerNewAccountActionValidation = celebrate(
+export const loginToPLatformActionValidation = celebrate(
   {
     [Segments.BODY]: Joi.object().keys({
       email: Joi.string().email().required(),
@@ -22,12 +22,12 @@ export const registerNewAccountActionValidation = celebrate(
 /**
  * @swagger
  *
- * /register:
+ * /login:
  *   post:
  *     tags:
  *       - Platform Access
  *     security: []
- *     summary: Create new Account
+ *     summary: Log In to the Platform
  *     requestBody:
  *       content:
  *         application/json:
@@ -43,7 +43,7 @@ export const registerNewAccountActionValidation = celebrate(
  *                writeOnly: true
  *     responses:
  *       201:
- *        description: Account created successfuly
+ *        description: Logged In successfuly
  *       422:
  *        description: Validation Error
  *       400:
@@ -51,14 +51,10 @@ export const registerNewAccountActionValidation = celebrate(
  *       500:
  *         description: Internal Server Error
  */
-const registerNewAccountAction = ({ commandBus }: Dependencies): RequestHandler => (
-  req,
-  res,
-  next,
-) =>
+const loginToPlatformAction = ({ commandBus }: Dependencies): RequestHandler => (req, res, next) =>
   commandBus
-    .handle(new RegisterNewAccountCommand(req.body))
-    .then(() => res.sendStatus(201))
+    .handle(new LoginToPlatformCommand(req.body))
+    .then((tokens) => res.status(200).json(tokens))
     .catch(next);
 
-export default registerNewAccountAction;
+export default loginToPlatformAction;
