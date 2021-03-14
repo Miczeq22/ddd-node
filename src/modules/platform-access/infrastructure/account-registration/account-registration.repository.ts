@@ -31,4 +31,14 @@ export class AccountRegistrationRepositoryImpl implements AccountRegistrationRep
 
     return result.length ? AccountRegistrationMapper.toEntity(result[0]) : null;
   }
+
+  public async update(accountRegistration: AccountRegistration) {
+    const { id, ...data } = AccountRegistrationMapper.toPersistence(accountRegistration);
+
+    const trx = await this.dependencies.queryBuilder.transaction();
+
+    await trx.update(data).where('id', id).into(ACCOUNT_REGISTRATION_TABLE);
+
+    return trx;
+  }
 }

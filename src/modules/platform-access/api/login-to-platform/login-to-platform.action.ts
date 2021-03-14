@@ -42,8 +42,19 @@ export const loginToPLatformActionValidation = celebrate(
  *                format: password
  *                writeOnly: true
  *     responses:
- *       201:
+ *       200:
  *        description: Logged In successfuly
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                accessToken:
+ *                  type: string
+ *                  pattern: ^[A-Za-z0-9-_]+\.[A-Za-z0-9-_]+\.[A-Za-z0-9-_.+/=]*$
+ *                refreshToken:
+ *                  type: string
+ *                  pattern: ^[A-Za-z0-9-_]+\.[A-Za-z0-9-_]+\.[A-Za-z0-9-_.+/=]*$
  *       422:
  *        description: Validation Error
  *       400:

@@ -5,6 +5,7 @@ import { AccountEmail } from '../account-email/account-email.value-object';
 import { AccountPassword } from '../account-password/account-password.value-object';
 import { AccountStatus } from '../account-status/account-status.value-object';
 import { NewAccountRegisteredEvent } from './events/new-account-registered.domain-event';
+import { AccountCannotBeAlreadyConfirmedRule } from './rules/account-cannot-be-already-confirmed.rule';
 
 interface AccountRegistrationProps {
   email: AccountEmail;
@@ -39,6 +40,13 @@ export class AccountRegistration extends AggregateRoot<AccountRegistrationProps>
 
   public static fromPersistence(props: AccountRegistrationProps, id: UniqueEntityID) {
     return new AccountRegistration(props, id);
+  }
+
+  public confirmAccount() {
+    AccountRegistration.checkRule(new AccountCannotBeAlreadyConfirmedRule(this.props.status));
+
+    this.props.status = AccountStatus.Confirmed;
+    this.props.confirmationDate = new Date();
   }
 
   public getEmail() {
