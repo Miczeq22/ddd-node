@@ -18,7 +18,7 @@ export class DomainEvents {
 
   public static async dispatchDomainEventsForAggregate(
     aggregate: AggregateRoot<unknown>,
-    trx: DatabaseTransaction,
+    trx?: DatabaseTransaction,
   ) {
     const key = this.getAggregateKey(aggregate);
 
