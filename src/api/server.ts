@@ -26,10 +26,8 @@ export class Server {
   }
 
   private init() {
-    this.app.get('/', (_, res) => {
-      res.status(200).json({
-        message: 'Hello, World!',
-      });
+    this.app.get('/', (req, res) => {
+      res.redirect(308, `${req.baseUrl}/api-docs`);
     });
 
     this.app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
