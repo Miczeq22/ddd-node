@@ -51,7 +51,7 @@ export const errorHandlerMiddleware = (logger: Logger): ErrorRequestHandler => (
 
     case AppError.name:
     default:
-      return res.status(500).json({
+      return res.status(error.errorCode ?? 500).json({
         error: error.message,
         name: error.name,
       });

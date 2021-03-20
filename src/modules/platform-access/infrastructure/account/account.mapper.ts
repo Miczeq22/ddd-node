@@ -3,6 +3,7 @@ import { AccountEmail } from '../../core/account-email/account-email.value-objec
 import { AccountPassword } from '../../core/account-password/account-password.value-object';
 import { AccountStatus } from '../../core/account-status/account-status.value-object';
 import { Account } from '../../core/account/account.aggregate-root';
+import { SubscriptionType } from '../../core/subscription-type/subscription-type.value-object';
 
 interface AccountRecord {
   id: string;
@@ -29,6 +30,8 @@ export class AccountMapper {
         email: AccountEmail.fromPersistence(record.email),
         password: AccountPassword.fromPersistence(record.password),
         status: AccountStatus.fromValue(record.status),
+        // TODO: Set on paid subscription introduced
+        subscriptionType: SubscriptionType.Free,
       },
       new UniqueEntityID(record.id),
     );
