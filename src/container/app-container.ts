@@ -11,6 +11,7 @@ import { logger } from '@tools/logger';
 import { MailerServiceMailhogImpl } from '@infrastructure/mailer/mailhog-mailer.service';
 import { registerSubscribers } from './subscribers';
 import { JwtTokenProviderService } from '@infrastructure/token-provider/jwt-token-provider.service';
+import { authMiddleware } from '@api/rest/middlewares/auth/auth.middleware';
 
 export const registerAsArray = <T>(resolvers: Awilix.Resolver<T>[]): Awilix.Resolver<T[]> => ({
   resolve: (container: Awilix.AwilixContainer) => resolvers.map((r) => container.build(r)),
@@ -28,6 +29,7 @@ export const createAppContainer = async (): Promise<Awilix.AwilixContainer> => {
     logger: Awilix.asValue(logger),
     mailer: Awilix.asClass(MailerServiceMailhogImpl).singleton(),
     tokenProvider: Awilix.asClass(JwtTokenProviderService).singleton(),
+    authMiddleware: Awilix.asFunction(authMiddleware).scoped(),
   });
 
   container.loadModules(
