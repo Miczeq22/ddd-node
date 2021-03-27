@@ -1,4 +1,4 @@
-import { UniqueEntityID } from '@root/shared/unique-entity-id';
+import { UniqueEntityID } from '@root/framework/unique-entity-id';
 import { AccountEmail } from '../account-email/account-email.value-object';
 import { AccountPassword } from '../account-password/account-password.value-object';
 import { AccountStatus } from '../account-status/account-status.value-object';

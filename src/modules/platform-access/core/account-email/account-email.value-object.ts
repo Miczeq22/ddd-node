@@ -1,4 +1,4 @@
-import { ValueObject } from '@root/shared/value-object';
+import { ValueObject } from '@root/framework/value-object';
 import { AccountEmailCheckerService } from './account-email-checker.service';
 import { EmailMustBeUniqueRule } from './rules/email-must-be-unique.rule';
 import { EmailMustBeValdidRule } from './rules/email-must-be-valid.rule';

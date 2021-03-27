@@ -1,5 +1,5 @@
 import { NotFoundError } from '@errors/not-found.error';
-import { Controller } from '@root/shared/api/controller';
+import { Controller } from '@root/framework/api/controller';
 import { Logger } from '@tools/logger';
 import express, { Application } from 'express';
 import { errorHandlerMiddleware } from './rest/middlewares/error-handler/error-handler.middleware';

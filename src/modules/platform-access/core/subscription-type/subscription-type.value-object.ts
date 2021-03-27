@@ -1,4 +1,4 @@
-import { ValueObject } from '@root/shared/value-object';
+import { ValueObject } from '@root/framework/value-object';
 import { InvalidSubscriptionTypeError } from '../../errors/invalid-subscription-type.error';
 
 export enum SubscriptionTypeValue {

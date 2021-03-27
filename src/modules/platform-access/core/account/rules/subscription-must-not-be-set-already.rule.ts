@@ -1,4 +1,4 @@
-import { BusinessRule } from '@root/shared/business-rule';
+import { BusinessRule } from '@root/framework/business-rule';
 import { SubscriptionType } from '../../subscription-type/subscription-type.value-object';
 
 export class SubscriptionMustNotBeSetAlreadyRule extends BusinessRule {

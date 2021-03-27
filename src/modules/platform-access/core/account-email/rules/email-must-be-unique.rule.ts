@@ -1,4 +1,4 @@
-import { BusinessRule } from '@root/shared/business-rule';
+import { BusinessRule } from '@root/framework/business-rule';
 import { AccountEmailCheckerService } from '../account-email-checker.service';
 
 export class EmailMustBeUniqueRule extends BusinessRule {

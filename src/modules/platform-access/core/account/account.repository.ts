@@ -1,5 +1,5 @@
 import { DatabaseTransaction } from '@infrastructure/database/database-transaction';
-import { UniqueEntityID } from '@root/shared/unique-entity-id';
+import { UniqueEntityID } from '@root/framework/unique-entity-id';
 import { AccountEmail } from '../account-email/account-email.value-object';
 import { Account } from './account.aggregate-root';
 

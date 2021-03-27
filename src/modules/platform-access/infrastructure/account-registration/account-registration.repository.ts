@@ -1,5 +1,5 @@
 import { QueryBuilder } from '@infrastructure/database/query-builder';
-import { UniqueEntityID } from '@root/shared/unique-entity-id';
+import { UniqueEntityID } from '@root/framework/unique-entity-id';
 import { AccountRegistration } from '../../core/account-registration/account-registration.aggregate-root';
 import { AccountRegistrationRepository } from '../../core/account-registration/account-registration.repository';
 import {

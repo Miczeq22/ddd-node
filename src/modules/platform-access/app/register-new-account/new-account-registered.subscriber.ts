@@ -1,7 +1,7 @@
 import { MailerService } from '@infrastructure/mailer/mailer.service';
 import { TokenProviderService } from '@infrastructure/token-provider/token-provider.service';
-import { DomainEvents } from '@root/shared/domain-events';
-import { DomainSubscriber } from '@root/shared/domain-subscriber';
+import { DomainEvents } from '@root/framework/domain-events';
+import { DomainSubscriber } from '@root/framework/domain-subscriber';
 import {
   NewAccountRegisteredEvent,
   NEW_ACCOUNT_REGISTERED_EVENT,

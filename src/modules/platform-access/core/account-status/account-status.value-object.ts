@@ -1,4 +1,4 @@
-import { ValueObject } from '@root/shared/value-object';
+import { ValueObject } from '@root/framework/value-object';
 import { InvalidAccountTypeError } from '../../errors/invalid-account-type.error';
 
 export enum AccountStatusValue {

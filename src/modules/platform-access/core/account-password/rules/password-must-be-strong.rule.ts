@@ -1,4 +1,4 @@
-import { BusinessRule } from '@root/shared/business-rule';
+import { BusinessRule } from '@root/framework/business-rule';
 
 export class PasswordMustBeStrongRule extends BusinessRule {
   message = 'Provided password is not strong enough.';

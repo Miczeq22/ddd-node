@@ -1,13 +1,15 @@
-import { Controller } from '@root/shared/api/controller';
+import { Controller } from '@root/framework/api/controller';
 import { Router, RequestHandler } from 'express';
 import { confirmAccountActionValidation } from './confirm-account/confirm-account.action';
 import { loginToPLatformActionValidation } from './login-to-platform/login-to-platform.action';
 import { registerNewAccountActionValidation } from './register-new-account/register-new-account.action';
 
 interface Dependencies {
+  authMiddleware: RequestHandler;
   registerNewAccountAction: RequestHandler;
   loginToPlatformAction: RequestHandler;
   confirmAccountAction: RequestHandler;
+  assignFreeSubscriptionAction: RequestHandler;
 }
 
 export class PlatfromAccessController extends Controller {
@@ -31,6 +33,11 @@ export class PlatfromAccessController extends Controller {
     router.get('/confirm-account', [
       confirmAccountActionValidation,
       this.dependencies.confirmAccountAction,
+    ]);
+
+    router.patch('/assign-free-subscription', [
+      this.dependencies.authMiddleware,
+      this.dependencies.assignFreeSubscriptionAction,
     ]);
 
     return router;

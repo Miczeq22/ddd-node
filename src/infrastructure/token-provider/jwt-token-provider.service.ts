@@ -1,4 +1,4 @@
-import { UniqueEntityID } from '@root/shared/unique-entity-id';
+import { UniqueEntityID } from '@root/framework/unique-entity-id';
 import {
   TokenProviderService,
   EmailConfirmationTokenPayload,

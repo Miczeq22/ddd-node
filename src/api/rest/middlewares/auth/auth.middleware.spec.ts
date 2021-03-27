@@ -5,7 +5,7 @@ import { JwtTokenProviderService } from '@infrastructure/token-provider/jwt-toke
 import { authMiddleware } from './auth.middleware';
 import { errorHandlerMiddleware } from '../error-handler/error-handler.middleware';
 import { Logger } from 'winston';
-import { UniqueEntityID } from '@root/shared/unique-entity-id';
+import { UniqueEntityID } from '@root/framework/unique-entity-id';
 
 describe('[API] Authorization middleware', () => {
   let app: Application;

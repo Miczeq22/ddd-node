@@ -1,4 +1,4 @@
-import { BusinessRule } from '@root/shared/business-rule';
+import { BusinessRule } from '@root/framework/business-rule';
 import { AccountPassword } from '../../account-password/account-password.value-object';
 import bcrypt from 'bcrypt';
 

@@ -1,5 +1,5 @@
 import { AccountPassword } from '@root/modules/platform-access/core/account-password/account-password.value-object';
-import { UniqueEntityID } from '@root/shared/unique-entity-id';
+import { UniqueEntityID } from '@root/framework/unique-entity-id';
 
 export interface EmailConfirmationTokenPayload {
   accountId: string;

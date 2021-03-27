@@ -1,5 +1,5 @@
 import { QueryBuilder } from '@infrastructure/database/query-builder';
-import { UniqueEntityID } from '@root/shared/unique-entity-id';
+import { UniqueEntityID } from '@root/framework/unique-entity-id';
 import { AccountEmail } from '../../core/account-email/account-email.value-object';
 import { Account } from '../../core/account/account.aggregate-root';
 import { AccountRepository } from '../../core/account/account.repository';
