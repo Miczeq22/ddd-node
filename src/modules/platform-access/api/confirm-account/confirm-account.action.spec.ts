@@ -9,7 +9,7 @@ import {
 } from '../../infrastructure/account-registration/account-registration.mapper';
 import { createAppContainer } from '@root/container/app-container';
 import { AccountRegistration } from '../../core/account-registration/account-registration.aggregate-root';
-import { UniqueEntityID } from '@root/shared/unique-entity-id';
+import { UniqueEntityID } from '@root/framework/unique-entity-id';
 import { AccountEmail } from '../../core/account-email/account-email.value-object';
 import { AccountPassword } from '../../core/account-password/account-password.value-object';
 import { AccountStatus } from '../../core/account-status/account-status.value-object';

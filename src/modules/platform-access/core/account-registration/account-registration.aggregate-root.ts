@@ -1,5 +1,5 @@
-import { AggregateRoot } from '@root/shared/aggregate-root';
-import { UniqueEntityID } from '@root/shared/unique-entity-id';
+import { AggregateRoot } from '@root/framework/aggregate-root';
+import { UniqueEntityID } from '@root/framework/unique-entity-id';
 import { AccountEmailCheckerService } from '../account-email/account-email-checker.service';
 import { AccountEmail } from '../account-email/account-email.value-object';
 import { AccountPassword } from '../account-password/account-password.value-object';

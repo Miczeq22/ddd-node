@@ -1,5 +1,5 @@
-import { DomainEvent } from '@root/shared/domain-event';
-import { UniqueEntityID } from '@root/shared/unique-entity-id';
+import { DomainEvent } from '@root/framework/domain-event';
+import { UniqueEntityID } from '@root/framework/unique-entity-id';
 import { AccountEmail } from '../../account-email/account-email.value-object';
 
 export const NEW_ACCOUNT_REGISTERED_EVENT = 'platform-access/new-account-registered';

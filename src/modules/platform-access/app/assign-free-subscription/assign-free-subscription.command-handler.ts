@@ -1,7 +1,7 @@
 import { UnauthorizedError } from '@errors/unauthorized.error';
-import { CommandHandler } from '@root/shared/processing/command-handler';
-import { performTransactionalOperation } from '@root/shared/transactional-operation';
-import { UniqueEntityID } from '@root/shared/unique-entity-id';
+import { CommandHandler } from '@root/framework/processing/command-handler';
+import { performTransactionalOperation } from '@root/framework/transactional-operation';
+import { UniqueEntityID } from '@root/framework/unique-entity-id';
 import { AccountRepository } from '../../core/account/account.repository';
 import {
   AssignFreeSubscriptionCommand,

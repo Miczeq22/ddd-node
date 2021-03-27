@@ -1,4 +1,4 @@
-import { Command } from '@root/shared/processing/command';
+import { Command } from '@root/framework/processing/command';
 
 interface Payload {
   accountId: string;

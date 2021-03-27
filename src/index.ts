@@ -10,7 +10,7 @@ import { createAppContainer } from './container/app-container';
 import { Application } from 'express';
 import { createServer } from 'http';
 import { Logger } from '@tools/logger';
-import { DomainSubscriber } from './shared/domain-subscriber';
+import { DomainSubscriber } from './framework/domain-subscriber';
 
 (async () => {
   const container = await createAppContainer();

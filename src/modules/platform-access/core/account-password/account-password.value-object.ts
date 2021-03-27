@@ -1,4 +1,4 @@
-import { ValueObject } from '@root/shared/value-object';
+import { ValueObject } from '@root/framework/value-object';
 import bcrypt from 'bcrypt';
 import { PasswordMustBeStrongRule } from './rules/password-must-be-strong.rule';
 

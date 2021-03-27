@@ -1,4 +1,4 @@
-import { DomainEvent } from '@root/shared/domain-event';
+import { DomainEvent } from '@root/framework/domain-event';
 import { AccountEmail } from '../../account-email/account-email.value-object';
 
 export const USER_LOGGED_IN_EVENT = 'platform-access/user-logged-in';

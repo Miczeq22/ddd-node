@@ -1,4 +1,4 @@
-import { BusinessRule } from '@root/shared/business-rule';
+import { BusinessRule } from '@root/framework/business-rule';
 
 export class EmailMustBeValdidRule extends BusinessRule {
   message = 'Provided email is not valid.';

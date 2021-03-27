@@ -1,4 +1,4 @@
-import { CommandBus } from '@root/shared/processing/command-bus';
+import { CommandBus } from '@root/framework/processing/command-bus';
 import { celebrate, Joi, Segments } from 'celebrate';
 import { RequestHandler } from 'express';
 import { RegisterNewAccountCommand } from '../../app/register-new-account/register-new-account.command';

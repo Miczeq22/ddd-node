@@ -1,4 +1,4 @@
-import { UniqueEntityID } from '@root/shared/unique-entity-id';
+import { UniqueEntityID } from '@root/framework/unique-entity-id';
 import { AccountEmail } from '../../core/account-email/account-email.value-object';
 import { AccountPassword } from '../../core/account-password/account-password.value-object';
 import { AccountRegistration } from '../../core/account-registration/account-registration.aggregate-root';
