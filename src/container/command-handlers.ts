@@ -4,6 +4,7 @@ import { RegisterNewAccountCommandHandler } from '@root/modules/platform-access/
 import { CommandHandler } from '@root/framework/processing/command-handler';
 import * as Awilix from 'awilix';
 import { registerAsArray } from './app-container';
+import { AssignFreeSubscriptionCommandHandler } from '@root/modules/platform-access/app/assign-free-subscription/assign-free-subscription.command-handler';
 
 export const registerCommandHandlers = (container: Awilix.AwilixContainer) => {
   container.register({
@@ -11,6 +12,7 @@ export const registerCommandHandlers = (container: Awilix.AwilixContainer) => {
       Awilix.asClass(RegisterNewAccountCommandHandler).singleton(),
       Awilix.asClass(LoginToPlatformCommandHandler).singleton(),
       Awilix.asClass(ConfirmAccountCommandHandler).singleton(),
+      Awilix.asClass(AssignFreeSubscriptionCommandHandler).singleton(),
     ]),
   });
 };
