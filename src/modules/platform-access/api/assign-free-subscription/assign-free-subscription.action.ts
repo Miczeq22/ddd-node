@@ -6,6 +6,26 @@ interface Dependencies {
   commandBus: CommandBus;
 }
 
+/**
+ * @swagger
+ *
+ * /assign-free-subscription:
+ *   patch:
+ *     tags:
+ *       - Platform Access
+ *     security:
+ *       - bearerAuth: []
+ *     summary: Assigns free subscription to the account
+ *     responses:
+ *       204:
+ *        description: Free subscription type assigned
+ *       422:
+ *        description: Validation Error
+ *       400:
+ *        description: Bussiness rule validation error occured
+ *       500:
+ *         description: Internal Server Error
+ */
 const assignFreeSubscriptionAction = ({ commandBus }: Dependencies): RequestHandler => (
   _,
   res,
