@@ -1,7 +1,7 @@
 import { CommandBus } from '@root/framework/processing/command-bus';
 import { celebrate, Joi, Segments } from 'celebrate';
 import { RequestHandler } from 'express';
-import { LoginToPlatformCommand } from '../../app/login-to-platform/login-to-platform.command';
+import { LoginToPlatformCommand } from '../../app/commands/login-to-platform/login-to-platform.command';
 
 interface Dependencies {
   commandBus: CommandBus;
