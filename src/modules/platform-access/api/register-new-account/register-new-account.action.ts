@@ -1,7 +1,7 @@
 import { CommandBus } from '@root/framework/processing/command-bus';
 import { celebrate, Joi, Segments } from 'celebrate';
 import { RequestHandler } from 'express';
-import { RegisterNewAccountCommand } from '../../app/register-new-account/register-new-account.command';
+import { RegisterNewAccountCommand } from '../../app/commands/register-new-account/register-new-account.command';
 
 interface Dependencies {
   commandBus: CommandBus;

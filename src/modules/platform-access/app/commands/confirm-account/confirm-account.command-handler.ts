@@ -3,7 +3,7 @@ import { TokenProviderService } from '@infrastructure/token-provider/token-provi
 import { CommandHandler } from '@root/framework/processing/command-handler';
 import { performTransactionalOperation } from '@root/framework/transactional-operation';
 import { UniqueEntityID } from '@root/framework/unique-entity-id';
-import { AccountRegistrationRepository } from '../../core/account-registration/account-registration.repository';
+import { AccountRegistrationRepository } from '../../../core/account-registration/account-registration.repository';
 import { ConfirmAccountCommand, CONFIRM_ACCOUNT_COMMAND } from './confirm-account.command';
 
 interface Dependencies {

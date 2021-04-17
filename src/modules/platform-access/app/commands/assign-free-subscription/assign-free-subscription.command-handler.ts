@@ -2,7 +2,7 @@ import { UnauthorizedError } from '@errors/unauthorized.error';
 import { CommandHandler } from '@root/framework/processing/command-handler';
 import { performTransactionalOperation } from '@root/framework/transactional-operation';
 import { UniqueEntityID } from '@root/framework/unique-entity-id';
-import { AccountRepository } from '../../core/account/account.repository';
+import { AccountRepository } from '../../../core/account/account.repository';
 import {
   AssignFreeSubscriptionCommand,
   ASSIGN_FREE_SUBSCRIPTION_COMMAND,

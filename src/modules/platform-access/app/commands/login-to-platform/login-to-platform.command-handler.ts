@@ -2,8 +2,8 @@ import { UnauthorizedError } from '@errors/unauthorized.error';
 import { TokenProviderService } from '@infrastructure/token-provider/token-provider.service';
 import { DomainEvents } from '@root/framework/domain-events';
 import { CommandHandler } from '@root/framework/processing/command-handler';
-import { AccountEmail } from '../../core/account-email/account-email.value-object';
-import { AccountRepository } from '../../core/account/account.repository';
+import { AccountEmail } from '../../../core/account-email/account-email.value-object';
+import { AccountRepository } from '../../../core/account/account.repository';
 import { LoginToPlatformCommand, LOGIN_TO_PLATFORM_COMMAND } from './login-to-platform.command';
 
 interface Dependencies {
