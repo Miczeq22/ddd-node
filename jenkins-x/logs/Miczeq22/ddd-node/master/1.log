@@ -1,0 +1,328 @@
+
+Showing logs for build [32mmiczeq22-ddd-node-master-wm7bh-1[0m stage [32mfrom-build-pack[0m and container [32mcredential-initializer[0m
+{"level":"info","ts":1618860700.7121377,"caller":"creds-init/main.go:44","msg":"Credentials initialized."}
+
+Showing logs for build [32mmiczeq22-ddd-node-master-wm7bh-1[0m stage [32mfrom-build-pack[0m and container [32mworking-dir-initializer[0m
+
+Showing logs for build [32mmiczeq22-ddd-node-master-wm7bh-1[0m stage [32mfrom-build-pack[0m and container [32mplace-tools[0m
+
+Showing logs for build [32mmiczeq22-ddd-node-master-wm7bh-1[0m stage [32mfrom-build-pack[0m and container [32mstep-git-source-miczeq22-ddd-node-master-wm7bh-7j798[0m
+{"level":"info","ts":1618860750.4951906,"caller":"git/git.go:105","msg":"Successfully cloned https://github.com/********/ddd-node.git @ v0.0.1 in path /workspace/source"}
+{"level":"warn","ts":1618860750.4952788,"caller":"git/git.go:152","msg":"Unexpected error: creating symlink: symlink /tekton/home/.ssh /root/.ssh: file exists"}
+{"level":"info","ts":1618860750.527885,"caller":"git/git.go:133","msg":"Successfully initialized and updated submodules in path /workspace/source"}
+
+Showing logs for build [32mmiczeq22-ddd-node-master-wm7bh-1[0m stage [32mfrom-build-pack[0m and container [32mstep-setup-builder-home[0m
+
+Showing logs for build [32mmiczeq22-ddd-node-master-wm7bh-1[0m stage [32mfrom-build-pack[0m and container [32mstep-git-merge[0m
+Using SHAs from PULL_REFS=master:a6bd25adad440aca0b027a1bad1015734ab41c83
+WARNING: no SHAs to merge, falling back to initial cloned commit
+
+Showing logs for build [32mmiczeq22-ddd-node-master-wm7bh-1[0m stage [32mfrom-build-pack[0m and container [32mstep-setup-jx-git-credentials[0m
+Generated Git credentials file /workspace/xdg_config/git/credentials
+
+Showing logs for build [32mmiczeq22-ddd-node-master-wm7bh-1[0m stage [32mfrom-build-pack[0m and container [32mstep-build-npmrc[0m
+WARNING: failed to find Secret npm-token in namespace **
+
+Showing logs for build [32mmiczeq22-ddd-node-master-wm7bh-1[0m stage [32mfrom-build-pack[0m and container [32mstep-build-npm-install[0m
+npm WARN read-shrinkwrap This version of npm is compatible with lockfileVersion@1, but package-lock.json was generated for lockfileVersion@2. I'll try to do my best with it!
+
+> bcrypt@5.0.1 install /workspace/source/node_modules/bcrypt
+> node-pre-gyp install --fallback-to-build
+
+[bcrypt] Success: "/workspace/source/node_modules/bcrypt/lib/binding/napi-v3/bcrypt_lib.node" is installed via remote
+
+> core-js-pure@3.9.0 postinstall /workspace/source/node_modules/core-js-pure
+> node -e "try{require('./postinstall')}catch(e){}"
+
+
+> nodemon@2.0.7 postinstall /workspace/source/node_modules/nodemon
+> node bin/postinstall || exit 0
+
+[32mLove nodemon? You can now support the project via the open collective:[22m[39m
+ > [96m[1mhttps://opencollective.com/nodemon/donate[0m
+
+npm WARN source No repository field.
+npm WARN source No license field.
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@2.3.2 (node_modules/fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@2.3.2: wanted {"os":"darwin","arch":"any"} (current: {"os":"linux","arch":"x64"})
+
+added 1023 packages from 722 contributors and audited 1025 packages in 17.299s
+found 0 vulnerabilities
+
+
+Showing logs for build [32mmiczeq22-ddd-node-master-wm7bh-1[0m stage [32mfrom-build-pack[0m and container [32mstep-build-npm-test[0m
+
+> @ test /workspace/source
+> NODE_ENV=test jest --config ./jest.config.js
+
+PASS src/modules/platform-access/core/account/account.aggregate-root.spec.ts
+FAIL src/modules/platform-access/api/confirm-account/confirm-account.action.spec.ts
+  ● Console
+
+    console.log
+      $2021-04-19T19:33:03.185Z | [[31merror[39m]: 	[API Error] celebrate request validation failed
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:79:23)
+
+  ● [API] REST POST /confirm-account › should throw an error if payload is invalid
+
+    connect ECONNREFUSED 127.0.0.1:5432
+
+
+
+  ● [API] REST POST /confirm-account › should throw an error if account does not exist
+
+    connect ECONNREFUSED 127.0.0.1:5432
+
+
+
+  ● [API] REST POST /confirm-account › should throw an error if account does not exist
+
+    TypeError: Cannot read property 'getEmailConfirmationToken' of undefined
+
+      53 |   test('should throw an error if account does not exist', async () => {
+      54 |     const res = await request(app).get(
+    > 55 |       `${ENDPOINT}?token=${tokenProvider.getEmailConfirmationToken(new UniqueEntityID())}`,
+         |                                          ^
+      56 |     );
+      57 |
+      58 |     expect(res.statusCode).toEqual(401);
+
+      at Object.test (src/modules/platform-access/api/confirm-account/confirm-account.action.spec.ts:55:42)
+
+  ● [API] REST POST /confirm-account › should throw an error if account is already confirmed
+
+    connect ECONNREFUSED 127.0.0.1:5432
+
+
+
+  ● [API] REST POST /confirm-account › should throw an error if account is already confirmed
+
+    TypeError: Cannot read property 'insert' of undefined
+
+      77 |
+      78 |     await queryBuilder
+    > 79 |       .insert(AccountRegistrationMapper.toPersistence(account))
+         |        ^
+      80 |       .into(ACCOUNT_REGISTRATION_TABLE);
+      81 |
+      82 |     const res = await request(app)
+
+      at Object.test (src/modules/platform-access/api/confirm-account/confirm-account.action.spec.ts:79:8)
+
+  ● [API] REST POST /confirm-account › should confirm account and redirect user to front end app
+
+    connect ECONNREFUSED 127.0.0.1:5432
+
+
+
+  ● [API] REST POST /confirm-account › should confirm account and redirect user to front end app
+
+    TypeError: Cannot read property 'insert' of undefined
+
+      106 |
+      107 |     await queryBuilder
+    > 108 |       .insert(AccountRegistrationMapper.toPersistence(account))
+          |        ^
+      109 |       .into(ACCOUNT_REGISTRATION_TABLE);
+      110 |
+      111 |     const res = await request(app)
+
+      at Object.test (src/modules/platform-access/api/confirm-account/confirm-account.action.spec.ts:108:8)
+
+FAIL src/modules/platform-access/api/login-to-platform/login-to-platform.action.spec.ts
+  ● Console
+
+    console.log
+      $2021-04-19T19:33:05.854Z | [[31merror[39m]: 	[API Error] celebrate request validation failed
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:79:23)
+
+    console.log
+      $2021-04-19T19:33:05.879Z | [[31merror[39m]: 	[API Error] connect ECONNREFUSED 127.0.0.1:5432
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:79:23)
+
+  ● [API] REST POST /login › should throw an error if payload is invalid
+
+    connect ECONNREFUSED 127.0.0.1:5432
+
+
+
+  ● [API] REST POST /login › should throw an error if credentails are invalid
+
+    connect ECONNREFUSED 127.0.0.1:5432
+
+
+
+  ● [API] REST POST /login › should throw an error if credentails are invalid
+
+    expect(received).toEqual(expected) // deep equality
+
+    Expected: 401
+    Received: 500
+
+      56 |     const res = await request(app).post(ENDPOINT).send(payload).set('Accept', 'application/json');
+      57 |
+    > 58 |     expect(res.statusCode).toEqual(401);
+         |                            ^
+      59 |   });
+      60 |
+      61 |   test('should throw an error if account is not confirmed', async () => {
+
+      at Object.test (src/modules/platform-access/api/login-to-platform/login-to-platform.action.spec.ts:58:28)
+
+  ● [API] REST POST /login › should throw an error if account is not confirmed
+
+    connect ECONNREFUSED 127.0.0.1:5432
+
+
+
+  ● [API] REST POST /login › should throw an error if account is not confirmed
+
+    TypeError: Cannot read property 'insert' of undefined
+
+      77 |
+      78 |     await queryBuilder
+    > 79 |       .insert(AccountRegistrationMapper.toPersistence(account))
+         |        ^
+      80 |       .into(ACCOUNT_REGISTRATION_TABLE);
+      81 |
+      82 |     const res = await request(app).post(ENDPOINT).send(payload).set('Accept', 'application/json');
+
+      at Object.test (src/modules/platform-access/api/login-to-platform/login-to-platform.action.spec.ts:79:8)
+
+  ● [API] REST POST /login › should login
+
+    connect ECONNREFUSED 127.0.0.1:5432
+
+
+
+  ● [API] REST POST /login › should login
+
+    TypeError: Cannot read property 'insert' of undefined
+
+      103 |
+      104 |     await queryBuilder
+    > 105 |       .insert(AccountRegistrationMapper.toPersistence(account))
+          |        ^
+      106 |       .into(ACCOUNT_REGISTRATION_TABLE);
+      107 |
+      108 |     const res = await request(app).post(ENDPOINT).send(payload).set('Accept', 'application/json');
+
+      at Object.test (src/modules/platform-access/api/login-to-platform/login-to-platform.action.spec.ts:105:8)
+
+PASS src/modules/platform-access/core/account-registration/account-registration.aggregate-root.spec.ts
+FAIL src/modules/platform-access/api/register-new-account/register-new-account.action.spec.ts
+  ● Console
+
+    console.log
+      $2021-04-19T19:33:09.097Z | [[31merror[39m]: 	[API Error] celebrate request validation failed
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:79:23)
+
+    console.log
+      $2021-04-19T19:33:09.115Z | [[31merror[39m]: 	[API Error] connect ECONNREFUSED 127.0.0.1:5432
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:79:23)
+
+    console.log
+      $2021-04-19T19:33:09.120Z | [[31merror[39m]: 	[API Error] connect ECONNREFUSED 127.0.0.1:5432
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:79:23)
+
+  ● [API] REST POST /register › should throw an error if payload is invalid
+
+    connect ECONNREFUSED 127.0.0.1:5432
+
+
+
+  ● [API] REST POST /register › should throw an error if email is already taken
+
+    connect ECONNREFUSED 127.0.0.1:5432
+
+
+
+  ● [API] REST POST /register › should throw an error if email is already taken
+
+    TypeError: Cannot read property 'isUnique' of undefined
+
+      13 |
+      14 |   public async isBroken() {
+    > 15 |     return !(await this.accountEmailChecker.isUnique(this.email));
+         |                                             ^
+      16 |   }
+      17 | }
+      18 |
+
+      at EmailMustBeUniqueRule.isBroken (src/modules/platform-access/core/account-email/rules/email-must-be-unique.rule.ts:15:45)
+      at Function.checkRule (src/framework/value-object.ts:14:20)
+      at Function.createNew (src/modules/platform-access/core/account-email/account-email.value-object.ts:19:24)
+      at Function.registerNew (src/modules/platform-access/core/account-registration/account-registration.aggregate-root.ts:29:33)
+      at Object.test (src/modules/platform-access/api/register-new-account/register-new-account.action.spec.ts:57:47)
+
+  ● [API] REST POST /register › should throw an error if password is not strong enough
+
+    connect ECONNREFUSED 127.0.0.1:5432
+
+
+
+  ● [API] REST POST /register › should throw an error if password is not strong enough
+
+    expect(received).toEqual(expected) // deep equality
+
+    Expected: 400
+    Received: 500
+
+      80 |     const res = await request(app).post(ENDPOINT).send(payload).set('Accept', 'application/json');
+      81 |
+    > 82 |     expect(res.statusCode).toEqual(400);
+         |                            ^
+      83 |     expect(res.body.error).toEqual(
+      84 |       'Provided password is not strong enough. Provide password with minimum one digit.',
+      85 |     );
+
+      at Object.test (src/modules/platform-access/api/register-new-account/register-new-account.action.spec.ts:82:28)
+
+  ● [API] REST POST /register › should register new account
+
+    connect ECONNREFUSED 127.0.0.1:5432
+
+
+
+  ● [API] REST POST /register › should register new account
+
+    expect(received).toEqual(expected) // deep equality
+
+    Expected: 201
+    Received: 500
+
+      94 |     const res = await request(app).post(ENDPOINT).send(payload).set('Accept', 'application/json');
+      95 |
+    > 96 |     expect(res.statusCode).toEqual(201);
+         |                            ^
+      97 |   });
+      98 | });
+      99 |
+
+      at Object.test (src/modules/platform-access/api/register-new-account/register-new-account.action.spec.ts:96:28)
+
+PASS src/api/rest/middlewares/security/security.middleware.spec.ts
+PASS src/api/rest/middlewares/auth/auth.middleware.spec.ts
+PASS src/api/rest/middlewares/error-handler/error-handler.middleware.spec.ts
+PASS src/api/rest/middlewares/cors/cors.middleware.spec.ts
+FAIL src/infrastructure/database/postgres-query-builder.spec.ts
+  ● [INFRASTRUCTURE] Postgres Query Builder › should query database by postgres query builder
+
+    connect ECONNREFUSED 127.0.0.1:5432
+
+
+
+Test Suites: 4 failed, 6 passed, 10 total
+Tests:       13 failed, 32 passed, 45 total
+Snapshots:   0 total
+Time:        18.405 s
+Ran all test suites.
+npm ERR! Test failed.  See above for more details.
+[31m
+Pipeline failed on stage 'from-build-pack' : container 'step-build-npm-test'. The execution of the pipeline has stopped.[0m
