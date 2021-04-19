@@ -27,6 +27,6 @@ import { DomainSubscriber } from './framework/domain-subscriber';
   const port = process.env.PORT ?? 4000;
 
   server.listen(port, () => {
-    logger.info(`Server is listening on ${process.env.PROTOCOL}://${process.env.HOST}:${port}`);
+    logger.info(`Server listening on ${process.env.PROTOCOL}://${process.env.HOST}:${port}`);
   });
 })();
