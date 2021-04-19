@@ -1,6 +1,18 @@
-FROM node:9-slim
-ENV PORT 8080
-EXPOSE 8080
-WORKDIR /usr/src/app
+ARG IMAGE=node:14.15.0-alpine
+
+FROM $IMAGE as build
+
+WORKDIR .
+
 COPY . .
-CMD ["npm", "start"]
+
+RUN apk add --no-cache make gcc g++ python && \
+  npm install && \
+  npm rebuild bcrypt --build-from-source && \
+  apk del make gcc g++ python && \
+  npm run build
+
+
+EXPOSE 4000
+
+CMD ["node", "dist"]
